@@ -92,6 +92,10 @@ cd ${DIRNAME}
     . )                     \
     | tar xfp -
 
+echo ${DIRNAME} >> .gitignore
+git add .gitignore
+git commit -am "Ignore new project directory. It's already a repo."
+
 ## App works 
 #npm install
 #npm run dev
