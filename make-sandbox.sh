@@ -16,7 +16,7 @@
 ## # npm install
 ## # npm start
 ##
-## merge vite-app (from github)
+## merge babyapp-vite (from github)
 ## what changes here? Is this a pwa? Which icons, etc?
 ##   changes project from React to Vite
 ##   changes to BabyApp: PWA deployable by WordPress
@@ -41,11 +41,9 @@ if [ -z "$1" ]; then echo "usage $0 appname <dirname>"; exit; fi
 
 APPNAME=$1
 DIRNAME=$APPNAME
-echo $APPNAME $DIRNAME
 
 ## Check usage for optional DirName
 if [ -n "$2" ]; then DIRNAME=$2; fi
-echo $APPNAME $DIRNAME
 
 ## Check if dir already exists
 if test -f "$DIRNAME"; then
@@ -56,6 +54,7 @@ fi
 
 
 ## 1. Get Quest exported React project files from GitHub
+
 git clone ${GITHUB}/${APPNAME}.git ${DIRNAME}
 
 
@@ -79,7 +78,9 @@ git clone ${GITHUB}/${APPNAME}.git ${DIRNAME}
 #exit
 
 
-# 3. Minimal vite app
+
+## 3. Overlay vite app
+
 git clone ${GITHUB}/babyapp-vite.git babyapp-vite-orig
 cd ${DIRNAME}
 (cd ../babyapp-vite-orig; tar cf -	\
