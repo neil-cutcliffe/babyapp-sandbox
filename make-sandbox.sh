@@ -60,25 +60,21 @@ git clone ${GITHUB}/${APPNAME}.git ${DIRNAME}
 
 ## 2. App doesn't work yet, needs props.post
 
-#cd ${APPNAME}
-#(cd ../../Neil-quest; tar cvf - 	\
-#    ./src/App.jsx )				\
-#	| tar xfp -
+git clone ${GITHUB}/${APPNAME}.git ${DIRNAME}-orig
+cp minimal-src-App.jsx ${DIRNAME}-orig/src/App.jsx
 
-## App works 
-#npm install
-#npm start
-
-# git init
-# git add
-# git commit
-
-#cd ../
-#exit
+## Print instructions
+echo "To install and run"
+echo " cd ${DIRNAME}-orig"
+echo " npm install"
+echo " npm start"
 
 
 
 ## 3. Overlay vite app
+
+#    --exclude assets/react.svg  \
+#    --exclude src/App.css   \
 
 git clone ${GITHUB}/babyapp-vite.git babyapp-vite-orig
 echo "Vite overlay"
@@ -86,8 +82,6 @@ echo "Vite overlay"
     --exclude .git          \
     --exclude .gitignore    \
     --exclude src/index.css \
-    --exclude src/App.css   \
-    --exclude assets/react.svg  \
     . )                     \
     | ( cd ${DIRNAME}; tar xvfp - )
 
@@ -98,10 +92,10 @@ cat << EOF >> .git/info/exclude
 
 # Exclude BabyApp project, its a repo on its own.
 ${DIRNAME}
+${DIRNAME}-orig
 EOF
 
-
-## 5. Print instructions
+## Print instructions
 
 echo "To install and run"
 echo " cd ${DIRNAME}"
