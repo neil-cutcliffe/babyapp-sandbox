@@ -2,7 +2,7 @@
 
 ## BabyApp development work flow
 ## start in Figma, export to Quest
-## in Quest, add bindings to
+## use Quest, add bindings to
 ##   props.post.title
 ##   props.post.content
 ##   props.post.image
@@ -26,12 +26,11 @@
 ##   gets content from 1st post in WordPress
 ## does it look like the minimal Vite + React app, or like Quest exported app?
 ##   icons from Quest export should take precidence over Vite + React icons
-## is it useful if this repo can be checked out independently and run? (like minimal Vitre + Reach app)
+## is it useful if this repo can be checked out independently and run? (like minimal Vite + React app)
 ## test as Vite + React App
 ## # npm install - is it necessary or good idea to delete old node_modules?
 ## # npm run dev
-## save current work
-## # git commit
+
 
 #APPNAME="Quest-Babyapp-Card2"
 GITHUB="https://github.com/neil-cutcliffe"
@@ -82,69 +81,39 @@ git clone ${GITHUB}/${APPNAME}.git ${DIRNAME}
 ## 3. Overlay vite app
 
 git clone ${GITHUB}/babyapp-vite.git babyapp-vite-orig
-cd ${DIRNAME}
-(cd ../babyapp-vite-orig; tar cf -	\
+echo "Vite overlay"
+( cd ./babyapp-vite-orig; tar cf -	\
     --exclude .git          \
     --exclude .gitignore    \
     --exclude src/index.css \
     --exclude src/App.css   \
     --exclude assets/react.svg  \
     . )                     \
-    | tar xfp -
+    | ( cd ${DIRNAME}; tar xvfp - )
 
-echo ${DIRNAME} >> .gitignore
-git add .gitignore
-git commit -am "Ignore new project directory. It's already a repo."
 
-## App works 
-#npm install
-#npm run dev
+## 4. Exclude BabyApp project from this 'sandbox' git
+
+cat << EOF >> .git/info/exclude
+
+# Exclude BabyApp project, its a repo on its own.
+${DIRNAME}
+EOF
+
+
+## 5. Print instructions
+
+echo "To install and run"
+echo " cd ${DIRNAME}"
+echo " npm install"
+echo " npm run dev"
+
 
 exit
-
-
-
 
 
 OLD
 
-
-# Minimal vite app
-(cd ../vite-app; tar cf -	\
-    --exclude src/index.css \
-    --exclude src/App.css   \
-    --exclude assets/react.svg  \
-    . )                     \
-    | tar xfp -
-
 # Neil's WPAPI components
 (cd ../Neil-components; tar cf - . ) | tar xfp -
 
-# Neil's App for Card2
-# put blended package.json here
-(cd ../Neil-app; tar cf - . ) | tar xfp -
-
-cd ../
-
-# Compare for now
-diff -r -x .DS_Store -x .git -x node_modules -x package-lock.json $1- $1 > /tmp/diff.$1
-
-# Instructions to install and run
-echo "cd $1"
-echo "npm install"
-echo "npm run dev"
-
-exit
-
-## Notes
-
-## To create vite-app
-# npm create vite@latest
-# Need to install the following packages:
-#   create-vite@latest
-# Ok to proceed? (y) y
-# ✔ Project name: … vite-app
-# ✔ Select a framework: › React
-# ✔ Select a variant: › JavaScript
-#
-## Add vite-plugin-svgr to vite.config.js
