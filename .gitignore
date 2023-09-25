@@ -25,6 +25,3 @@ yarn-error.log*
 # babyapp repos
 babyapp-vite-orig
 babyapp-node_modules
-# babyapps special case: ignore local changes to .gitignore because its updated
-# to ignore local project name
-.gitignore
