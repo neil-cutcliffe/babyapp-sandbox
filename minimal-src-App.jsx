@@ -13,8 +13,8 @@ function App() {
           <Routes>
             <Route path="/" element={<SampleCard post={
               {
-                 title   : 'Title Neil 3',
-                 content : 'Content Neil was here three.',
+                 title   : 'Title Neil Was Here',
+                 content : 'Content Neil was here too.',
                  image   : 'url(https://babyapps.io/test-1/wp-content/uploads/sites/14/2023/01/8344BA1F-CBA1-4E95-846C-66C913A43E30-2-scaled.jpeg)'
               }
             } />} />
