@@ -13,9 +13,9 @@ function App() {
           <Routes>
             <Route path="/" element={<SampleCard post={
               {
-                 title   : 'Title Neil Was Here',
-                 content : 'Content Neil was here too.',
-                 image   : 'url(https://babyapps.io/test-1/wp-content/uploads/sites/14/2023/01/8344BA1F-CBA1-4E95-846C-66C913A43E30-2-scaled.jpeg)'
+                 title   : 'Lorem Ipsum',
+                 content : 'Lorem ipsum test to be seen and not read for placement only. Lorem ipsum test to be seen.',
+                 image   : 'url(/assets/images/SampleCard_Image.png)'
               }
             } />} />
           </Routes>
