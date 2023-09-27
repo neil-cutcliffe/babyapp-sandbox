@@ -62,6 +62,7 @@ git clone ${GITHUB}/${APPNAME}.git ${DIRNAME}
 
 git clone ${GITHUB}/${APPNAME}.git ${DIRNAME}-orig
 cp minimal-src-App.jsx ${DIRNAME}-orig/src/App.jsx
+ln -s ../src/assets ${DIRNAME}-orig/public/assets
 
 ## Print instructions
 echo "To install and run"
