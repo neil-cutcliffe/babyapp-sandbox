@@ -57,8 +57,8 @@ fi
 git clone ${GITHUB}/${APPNAME}.git ${DIRNAME}
 
 
-
-## 2. App doesn't work yet, needs props.post
+## 2. Create -orig directory with a minimal, working Quest App 
+##    It needs props.post
 
 git clone ${GITHUB}/${APPNAME}.git ${DIRNAME}-orig
 cp minimal-src-App.jsx ${DIRNAME}-orig/src/App.jsx
@@ -71,8 +71,11 @@ echo " npm install"
 echo " npm start"
 
 
+## 3. Get the BabyApp node_modules: WPFetch.js & posts.js
+git clone ${GITHUB}/babyapp-node_modules.git ${DIRNAME}/node-ba-api
 
-## 3. Overlay vite app
+
+## 4. Overlay vite app
 
 #    --exclude assets/react.svg  \
 #    --exclude src/App.css   \
@@ -87,7 +90,7 @@ echo "Vite overlay"
     | ( cd ${DIRNAME}; tar xvfp - )
 
 
-## 4. Exclude BabyApp project from this 'sandbox' git
+## 4. Exclude BabyApp project from this sandbox git
 
 cat << EOF >> .git/info/exclude
 
@@ -102,13 +105,7 @@ echo "To install and run"
 echo " cd ${DIRNAME}"
 echo " npm install"
 echo " npm run dev"
+echo
+echo " vi .env {point envvars at your test website}
 
-
-exit
-
-
-OLD
-
-# Neil's WPAPI components
-(cd ../Neil-components; tar cf - . ) | tar xfp -
 
