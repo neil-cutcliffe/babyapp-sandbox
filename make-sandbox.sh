@@ -58,7 +58,9 @@ git clone ${GITHUB}/${APPNAME}.git ${DIRNAME}
 
 
 ## 2. Create -orig directory with a minimal, working Quest App 
-##    It needs props.post
+##    So far, our SampleCard test project only needs props.post
+##    This step works with an new fresh Quest project. It doesn't necessarily
+##    work after project specific code has been checked into that repo.
 
 git clone ${GITHUB}/${APPNAME}.git ${DIRNAME}-orig
 cp minimal-src-App.jsx ${DIRNAME}-orig/src/App.jsx
@@ -77,14 +79,13 @@ git clone ${GITHUB}/babyapp-node_modules.git ${DIRNAME}/node-ba-api
 
 ## 4. Overlay vite app
 
-#    --exclude assets/react.svg  \
-#    --exclude src/App.css   \
-
 git clone ${GITHUB}/babyapp-vite.git babyapp-vite-orig
 echo "Vite overlay"
 ( cd ./babyapp-vite-orig; tar cf -	\
     --exclude .git          \
     --exclude .gitignore    \
+    --exclude assets/react.svg  \
+    --exclude src/App.css   \
     --exclude src/index.css \
     . )                     \
     | ( cd ${DIRNAME}; tar xvfp - )
