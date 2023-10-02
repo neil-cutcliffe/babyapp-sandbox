@@ -106,6 +106,6 @@ echo " cd ${DIRNAME}"
 echo " npm install"
 echo " npm run dev"
 echo
-echo " vi .env {point envvars at your test website}
+echo " vi .env {point envvars at your test website}"
 
 
