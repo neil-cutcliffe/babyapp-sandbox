@@ -3,7 +3,6 @@
 diff -r						\
 	-x .DS_Store			\
 	-x .git					\
-	-x .gitignore			\
 	-x index.css			\
 	-x node_modules			\
 	-x package-lock.json	\
