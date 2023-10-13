@@ -83,7 +83,6 @@ git clone ${GITHUB}/babyapp-vite.git babyapp-vite-orig
 echo "Vite overlay"
 ( cd ./babyapp-vite-orig; tar cf -	\
     --exclude .git          \
-    --exclude .gitignore    \
     --exclude assets/react.svg  \
     --exclude src/App.css   \
     --exclude src/index.css \
