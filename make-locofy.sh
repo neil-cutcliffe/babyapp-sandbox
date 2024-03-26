@@ -73,6 +73,14 @@ git clone ${GITHUB}/${APPNAME}.git ${DIRNAME}-orig
 ## 3. Get the BabyApp node_modules: WPFetch.js & posts.js
 git clone ${GITHUB}/babyapp-node_modules.git ${DIRNAME}/node-ba-api
 
+## 3-b. Exclude BabyApp node-modules from the BabyApp's git
+
+cat << EOF >> ${DIRNAME}/.gitignore
+
+# Ignore BabyApp node-module. Its a repo on its own.
+node-ba-api
+EOF
+
 
 ## 4. Overlay vite app
 
